@@ -1,0 +1,221 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Nav.master.cs" Inherits="Tee4Me.Nav" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+
+    <script src="ThisScripts/sweetalert.js"></script>
+    <script src="ThisScripts/jquery-3.6.0.min.js"></script>
+    <script src="ThisScripts/bootstrap.min.js"></script>
+    <link href="ThisScripts/bootstrap.min.css" rel="stylesheet" />
+    <link href="ThisScripts/carousel.css" rel="stylesheet" />
+    <link href="ThisScripts/Journal-bootstrap.min.css" rel="stylesheet" />
+
+    <script>
+        function error() {
+            Swal.fire({
+              icon: 'error',
+              title: 'Under Maintenance',
+              text: 'Something went wrong!',
+            })
+        }
+        function signupSuccess() {
+            Swal.fire({
+              icon: 'success',
+              title: 'User Successfuly Signed up',
+              text: 'the default password will follow up shortly.',
+            })
+        }
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="p-0">
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                  <div class="container">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarColor01">
+                      <ul class="navbar-nav me-auto">
+                          <asp:LinkButton ID="btnhome" runat="server">
+                              <li class="nav-item">
+                                  <a class="nav-link active" href="#">Tee4Me
+                                    <span class="visually-hidden">(current)</span>
+                                  </a>
+                                </li>
+                          </asp:LinkButton>
+                          <asp:LinkButton ID="btnlink1" runat="server">
+                              <li class="nav-item">
+                              <a class="nav-link" href="#">Features</a>
+                            </li>
+                          </asp:LinkButton>
+                          <asp:LinkButton ID="btnlink2" runat="server">
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#">Pricing</a>
+                                </li>
+                          </asp:LinkButton>
+                          <asp:LinkButton ID="btnlink3" runat="server">
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#">About</a>
+                                </li>
+                          </asp:LinkButton>
+                          <asp:LinkButton ID="btnlink4" runat="server">
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#">About</a>
+                                </li>
+                          </asp:LinkButton>
+                      </ul>
+                        <asp:LinkButton ID="NavNoUser" runat="server">
+                            <ul class="navbar-nav d-flex">
+                                <li class="nav-item">
+                                    <a class="btn btn-info my-2 my-sm-0 m-1" data-bs-toggle="modal" data-bs-target="#RegisterModal">
+                                        Sign up
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-secondary my-2 my-sm-0 m-1" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                                        Login
+                                    </a>
+                                </li>
+                            </ul>
+                        </asp:LinkButton>
+                    </div>
+                  </div>
+                </nav>
+            <div class="modal fade" id="LoginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelLogin" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabelLogin">Login</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="form-floating mb-3">
+                                    <asp:TextBox ID="txtUnameLogin" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label for="txtUnameLogin">Username<asp:RequiredFieldValidator ID="rqUsername" SetFocusOnError="true" ValidationGroup="RqLogin" runat="server" ControlToValidate="txtUnameLogin" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                </div>
+                                <div class="form-floating">
+                                    <asp:TextBox ID="txtPassLogin" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label for="txtPassLogin">Password<asp:RequiredFieldValidator ID="RequiredFieldValidator1" SetFocusOnError="true" ValidationGroup="RqLogin" runat="server" ControlToValidate="txtPassLogin" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                </div>
+                                <p class="m-0">Dont have an account yet <a href="#" data-bs-target="#RegisterModal" data-bs-toggle="modal" data-bs-dismiss="modal">Sign up here</a></p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <%--<asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" ValidationGroup="RqLogin" Text="Log in" OnClick="btnLogin_Click" />--%>
+                            <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" ValidationGroup="RqLogin" Text="Log in"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <div class="modal fade" id="RegisterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Sign up as</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-grid gap-2">
+                                      <button class="btn btn-lg btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#regmodCX">Customer</button>
+                                        <hr />
+                                      <button class="btn btn-lg btn-success" type="button">Graphic Designer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="regmodCX" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel2">Sign up as Customer</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="form-floating mb-3">
+                                    <asp:TextBox ID="txtFname" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label for="txtFname">First Name<asp:RequiredFieldValidator ID="RequiredFieldValidator2" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtFname" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <asp:TextBox ID="txtMname" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label for="txtMname">Middle Name<asp:RequiredFieldValidator ID="RequiredFieldValidator8" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtMname" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <asp:TextBox ID="txtLname" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label for="txtLname">Last Name<asp:RequiredFieldValidator ID="RequiredFieldValidator3" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtLname" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-floating">
+                                                <asp:TextBox ID="txtUname" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <label for="txtUname">Username<asp:RequiredFieldValidator ID="RequiredFieldValidator4" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtUname" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-floating">
+                                                <asp:TextBox ID="txtcontactno" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <label for="txtContactno">Contact Number<asp:RequiredFieldValidator ID="RequiredFieldValidator5" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtcontactno" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <div class="form-floating">
+                                                <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <label for="txtEmail">Email<asp:RequiredFieldValidator ID="RequiredFieldValidator6" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="form-floating">
+                                                <asp:TextBox ID="txtDOB" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <label for="txtDOB">Date of Birth<asp:RequiredFieldValidator ID="RequiredFieldValidator7" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtDOB" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-floating ">
+                                    <asp:TextBox ID="txtaddress" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label for="txtaddress">Address<asp:RequiredFieldValidator ID="RequiredFieldValidator9" SetFocusOnError="true" ValidationGroup="RqRegister" runat="server" ControlToValidate="txtaddress" ErrorMessage="*" ForeColor="Red" ></asp:RequiredFieldValidator></label>
+                                </div>
+                                <p class="m-0">already have an account <a href="#" data-bs-target="#LoginModal" data-bs-toggle="modal" data-bs-dismiss="modal">Login</a></p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <%--<asp:Button ID="btnRegister" CssClass="btn btn-primary" ValidationGroup="RqRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />--%>
+                            <asp:Button ID="btnRegisterCX" CssClass="btn btn-primary" ValidationGroup="RqRegister" runat="server" Text="Register" OnClick="btnRegisterCX_Click"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
+            
+        </div>
+    </form>
+</body>
+</html>
