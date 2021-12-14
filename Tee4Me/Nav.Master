@@ -12,8 +12,8 @@
     <script src="ThisScripts/sweetalert.js"></script>
     <script src="ThisScripts/jquery-3.6.0.min.js"></script>
     <script src="ThisScripts/bootstrap.min.js"></script>
-    <link href="ThisScripts/bootstrap.min.css" rel="stylesheet" />
     <link href="ThisScripts/carousel.css" rel="stylesheet" />
+    <link href="ThisScripts/bootstrap.min.css" rel="stylesheet" />
     <link href="ThisScripts/Journal-bootstrap.min.css" rel="stylesheet" />
 
     <script>
